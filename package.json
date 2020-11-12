@@ -20,7 +20,6 @@
     "react-native-web-maps"
   ],
   "scripts": {
-    "postinstall": "yarn install && yarn build",
     "prepublish": "yarn build",
     "build": "mkdir -p dist && babel src --out-dir dist",
     "test:lint": "yarn eslint . --quiet",
