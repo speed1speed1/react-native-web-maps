@@ -16,7 +16,7 @@ class MapView extends Component {
 
   handleMapMounted = map => {
     this.map = map;
-    this.props.onMapReady && this.props.onMapReady();
+    this.props.onMapReady && this.props.onMapReady(this);
   };
 
   getCamera = () => {
@@ -33,9 +33,10 @@ class MapView extends Component {
   }
 
   animateToRegion(coordinates) {
-    this.setState({
-      center: { lat: coordinates.latitude, lng: coordinates.longitude },
-    });
+    // this.setState({
+    //   center: { lat: coordinates.latitude, lng: coordinates.longitude },
+    // });
+    this.map.panTo({ lat: coordinates.latitude, lng: coordinates.longitude })
   }
 
   onDragEnd = () => {
