@@ -11,12 +11,6 @@ class MapViewMarker extends Component {
   hideCallout() {
     this.setState({ isOpen: false });
   }
-  selfOnPress = () => {
-    this.showCallout();
-    if (onPress) {
-      onPress();
-    }
-  }
   render() {
     const { description, title, coordinate, onPress, ...rest } = this.props;
 
@@ -28,7 +22,7 @@ class MapViewMarker extends Component {
         {...rest}
         title={description ? `${title}\n${description}` : title}
         position={{ lat: coordinate.latitude, lng: coordinate.longitude }}
-        onClick={this.selfOnPress}>
+        onClick={() => { onPress(this)}}>
         {this.state.isOpen && childrenWithProps}
       </Marker>
     );
